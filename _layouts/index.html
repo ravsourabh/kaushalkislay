@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Interested in investing? Mutual Funds or Insurance we are the right choice to go with. Find out more."/>
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    {% include css_insert.html %}
+    <!-- IN9SYIM6QZFCPOAF -->
+    <title>{{ page.title }}</title>
+    <script type="text/javascript">
+      function func1() {
+        axios.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=BSE:NIFTY50&apikey=IN9SYIM6QZFCPOAF')
+        .then(function (response) {
+          // handle success
+          console.log(response);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+      }
+      window.onload=func1;
+    </script>
+  </head>
+  <body>
+    {% include navigation.html %}
+    <div id="index-banner" class="parallax-container">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <br><br>
+          <h1 class="header center teal-text text-lighten-5">{{ page.main_text }}</h1>
+          <div class="row center">
+            <h5 class="header col s12 light">
+              {{page.main_support_text}}
+            </h5>
+          </div>
+          <div class="row center">
+            <a href={{page.main_call_to_action_link}} target="_blank" class="btn-large waves-effect waves-light teal lighten-1">{{page.main_call_to_action}}</a>
+          </div>
+          <br><br>
+
+        </div>
+      </div>
+      <div class="parallax"><img src="/assets/images/background1.jpg" alt="Unsplashed background img 1"></div>
+    </div>
+
+    <div class="container">
+      <div class="section">
+
+        <!--   Icon Section   -->
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="icon-block">
+              <h2 class="center brown-text"><i class="material-icons">{{page.secondary_1_icon}}</i></h2>
+              <h5 class="center">{{page.secondary_1_title_text}}</h5>
+
+              <p class="light">{{page.secondary_1_description_text}}</p>
+            </div>
+          </div>
+
+          <div class="col s12 m6">
+            <div class="icon-block">
+              <h2 class="center brown-text"><i class="material-icons">{{page.secondary_2_icon}}</i></h2>
+              <h5 class="center">{{page.secondary_2_title_text}}</h5>
+
+              <p class="light">{{page.secondary_2_description_text}}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="parallax-container valign-wrapper">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <h2 class="header center teal-text text-darken-1">{{ page.ternary_text1 }}</h2>
+          <div class="row center">
+            <h5 class="header col s12">{{page.ternary_text2}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="parallax"><img src="/assets/images/background2.jpg" alt="Unsplashed background img 2"></div>
+    </div>
+
+    <div class="container">
+      <div class="section">
+        <div class="row">
+          <div class="col s12 center">
+            <h3><i class="mdi-content-send brown-text"></i></h3>
+            <h4>{{page.fourth_title_text}}</h4>
+            <p class="left-align light">{{page.fourth_description_text}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="parallax-container valign-wrapper">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <h2 class="header center teal-text text-darken-1">{{ page.fifth_text1 }}</h2>
+          <div class="row center">
+            <h5 class="header col s12">{{page.fifth_text2}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="parallax"><img src="/assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
+    </div>
+
+    {% include footer.html %}
+
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="/assets/js/init.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </body>
+</html>
