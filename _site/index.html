@@ -34,7 +34,7 @@
   <div class="nav-wrapper container">
     <a id="logo-container" href="/" class="brand-logo hide-on-med-and-down"><img align="center" src="/assets/images/logo.png" height="50px" alt="Brand logo"><!-- <span align="center">Kaushal Kislay</span> --></a>
 
-    <a id="logo-container" href="/" class="brand-logo"><img align="center" src="/assets/images/logo.png" height="50px" alt="Brand logo"></a>
+    <a id="logo-container" href="/" class="brand-logo"><img align="center" src="/assets/images/logo.png" height="55px" alt="Brand logo"></a>
 
     <ul class="right hide-on-med-and-down">
     
@@ -77,7 +77,7 @@
               <h2 class="center brown-text"><i class="material-icons">business</i></h2>
               <h5 class="center">Mutual Funds</h5>
 
-              <p class="light"><ul class="collection"> <li class="collection-item"><a href="https://www.icicipruamc.com/" target="_blank">ICICI Prudential Mutual Fund</a></li> <li class="collection-item"><a href="https://www.hdfcfund.com/" target="_blank">HDFC Mutual Fund</a></li> <li class="collection-item"><a href="https://mutualfund.adityabirlacapital.com/" target="_blank">Aditya Birla Sun Life Mutual Fund</a></li> <li class="collection-item"><a href="https://www.reliancemutual.com/" target="_blank">Reliance Mutual Fund</a></li> <li class="collection-item"><a href="https://www.sbimf.com/en-us" target="_blank">SBI Mutual Fund</a></li> <li class="collection-item"><a href="https://www.ltfs.com/companies/lnt-investment-management/lnt-mutual-fund.html" target="_blank">L&T Mutual Fund</a></li> </ul></p>
+              <p class="light"><ul class="collection"> <li class="collection-item"><a href="https://www.franklintempletonindia.com/investor/index" target="_blank">Franklin Templeton</a></li> <li class="collection-item"><a href="https://www.icicipruamc.com/" target="_blank">ICICI Prudential Mutual Fund</a></li> <li class="collection-item"><a href="https://www.hdfcfund.com/" target="_blank">HDFC Mutual Fund</a></li> <li class="collection-item"><a href="https://www.reliancemutual.com/" target="_blank">Reliance Mutual Fund</a></li> <li class="collection-item"><a href="https://www.sbimf.com/en-us" target="_blank">SBI Mutual Fund</a></li> <li class="collection-item"><a href="https://www.ltfs.com/companies/lnt-investment-management/lnt-mutual-fund.html" target="_blank">L&T Mutual Fund</a></li> <li class="collection-item"><a href="https://mutualfund.adityabirlacapital.com/" target="_blank">Aditya Birla Sun Life Mutual Fund</a></li> </ul></p>
             </div>
           </div>
 
@@ -106,16 +106,148 @@
       <div class="parallax"><img src="/assets/images/background2.jpg" alt="Unsplashed background img 2"></div>
     </div>
 
-    <div class="container">
-      <div class="section">
-        <div class="row">
-          <div class="col s12 center">
-            <h3><i class="mdi-content-send brown-text"></i></h3>
-            <h4></h4>
-            <p class="left-align light"></p>
-          </div>
-        </div>
+    <div class="container game">
+      <!-- <script>
+    var myGamePiece;
+    var myObstacles = [];
+    var myScore;
+
+    function startGame() {
+        myGamePiece = null;
+        myObstacles = [];
+        myScore = null;
+        
+        myGamePiece = new component(60, 30, "red", 10, 120);
+        myGamePiece.gravity = 0.05;
+        myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+        myGameArea.start();
+    }
+
+    var myGameArea = {
+        canvas : document.createElement("canvas"),
+        start : function() {
+            this.canvas.height = 270;
+            this.context = this.canvas.getContext("2d");
+            div = document.getElementById('game'); 
+            div.appendChild(this.canvas);
+            this.frameNo = 0;
+            this.interval = setInterval(updateGameArea, 20);
+            },
+        clear : function() {
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        }
+    }
+
+    function component(width, height, color, x, y, type) {
+        this.type = type;
+        this.score = 0;
+        this.width = width;
+        this.height = height;
+        this.speedX = 0;
+        this.speedY = 0;    
+        this.x = x;
+        this.y = y;
+        this.gravity = 0;
+        this.gravitySpeed = 0;
+        this.update = function() {
+            ctx = myGameArea.context;
+            if (this.type == "text") {
+                ctx.font = this.width + " " + this.height;
+                ctx.fillStyle = color;
+                ctx.fillText(this.text, this.x, this.y);
+            } 
+            else if(this.type == "bleh") {
+                var fire = document.getElementById("fire");
+                ctx.drawImage(fire, this.x, this.y, this.width, this.height);
+            }
+            else {
+                var note = document.getElementById("note");
+                ctx.drawImage(note, this.x, this.y, this.width, this.height);
+            }
+        }
+        this.newPos = function() {
+            this.gravitySpeed += this.gravity;
+            this.x += this.speedX;
+            this.y += this.speedY + this.gravitySpeed;
+            this.hitBottom();
+        }
+        this.hitBottom = function() {
+            var rockbottom = myGameArea.canvas.height - this.height;
+            if (this.y > rockbottom) {
+                this.y = rockbottom;
+                this.gravitySpeed = 0;
+            }
+        }
+        this.crashWith = function(otherobj) {
+            var myleft = this.x;
+            var myright = this.x + (this.width);
+            var mytop = this.y;
+            var mybottom = this.y + (this.height);
+            var otherleft = otherobj.x;
+            var otherright = otherobj.x + (otherobj.width);
+            var othertop = otherobj.y;
+            var otherbottom = otherobj.y + (otherobj.height);
+            var crash = true;
+            if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+                crash = false;
+            }
+            return crash;
+        }
+    }
+
+    function updateGameArea() {
+        var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+        for (i = 0; i < myObstacles.length; i += 1) {
+            if (myGamePiece.crashWith(myObstacles[i])) {
+                return;
+            } 
+        }
+        myGameArea.clear();
+        myGameArea.frameNo += 1;
+        if (myGameArea.frameNo == 1 || everyinterval(150)) {
+            x = myGameArea.canvas.width;
+            minHeight = 20;
+            maxHeight = 200;
+            height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+            minGap = 50;
+            maxGap = 200;
+            gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+            myObstacles.push(new component(10, height, "green", x, 0, "bleh"));
+            myObstacles.push(new component(10, x - height - gap, "green", x, height + gap, "bleh"));
+        }
+        for (i = 0; i < myObstacles.length; i += 1) {
+            myObstacles[i].x += -1;
+            myObstacles[i].update();
+        }
+        myScore.text="SCORE: " + myGameArea.frameNo;
+        myScore.update();
+        myGamePiece.newPos();
+        myGamePiece.update();
+    }
+
+    function everyinterval(n) {
+        if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+        return false;
+    }
+
+    function accelerate(n) {
+        myGamePiece.gravity = n;
+    }
+</script>
+<div>
+    <div id="game">
+    </div>
+      <br>
+      <div style="display: none;">
+        <img id="note" height="50px" width="50px" src="https://cryptopotato.com/wp-content/uploads/2018/09/currency-1843349_640-min.jpg" alt="The Scream">
+        <img id="fire" height="50px" width="50px" src="https://india.shafaqna.com/wp-content/uploads/2019/02/shutterstock_289828547-1536519618-492.jpg" alt="The Scream">
       </div>
+      
+      <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
+      <p>Use the ACCELERATE button to stay in the air</p>
+      <p>How long can you stay alive?</p>
+      <button onclick="startGame()">start</button>
+</div> -->
     </div>
   
     <div class="parallax-container valign-wrapper">
