@@ -54,7 +54,10 @@ p {
 footer.page-footer {
   margin: 0;
 }
- 
+
+nav {
+  background-color: #14003F;
+}
 
 canvas {
     border:1px solid #d3d3d3;
